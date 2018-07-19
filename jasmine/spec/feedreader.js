@@ -56,6 +56,15 @@ $(function () {
 
     /* TODO: Write a new test suite named "The menu" */
     describe('The menu', function () {
+        let self = this;
+        self.menuClicked = false;
+        let slideMenu = document.querySelector('.slide-menu');
+        // document.querySelector('.icon-list').onclick = function() {
+        //     self.menuClicked = true;
+        // }
+        console.log(slideMenu);
+
+        let menuHidden = document.querySelector('body').classList.contains("menu-hidden");
 
         /* TODO: Write a test that ensures the menu element is
          * hidden by default. You'll have to analyze the HTML and
@@ -63,7 +72,7 @@ $(function () {
          * hiding/showing of the menu element.
          */
         it('hidden by default', function () {
-            expect(document.querySelector('body').classList.contains("menu-hidden")).toBe(true);
+            expect(menuHidden).toBe(true);
         });
 
         /* TODO: Write a test that ensures the menu changes
@@ -74,29 +83,37 @@ $(function () {
 
         //  When menu is clicked, menu should be displayed
         it ('should be visible once clicked', function() {
-            if (document.querySelector('body').classList.contains("menu-hidden") === true) {
-
-            }
+           if (self.menuClicked === false) {
+              
+           }
         });
-        //  When menu is clicked again, menu should disappeared
+
         it ('should not be visible once clicked again', function() {
 
         });
-
+        
+       
     });
 
 
 
     /* TODO: Write a new test suite named "Initial Entries" */
-
-    /* TODO: Write a test that ensures when the loadFeed
+    describe('Initial Entries', function(){
+         /* TODO: Write a test that ensures when the loadFeed
      * function is called and completes its work, there is at least
      * a single .entry element within the .feed container.
      * Remember, loadFeed() is asynchronous so this test will require
      * the use of Jasmine's beforeEach and asynchronous done() function.
      */
+    
+
+    });
+   
 
     /* TODO: Write a new test suite named "New Feed Selection" */
+    describe('New Feed Selection', function(){
+
+    });
 
     /* TODO: Write a test that ensures when a new feed is loaded
      * by the loadFeed function that the content actually changes.

@@ -7,6 +7,8 @@
  */
 
 // The names and URLs to all of the feeds we'd like available.
+let isHidden = true;
+
 let allFeeds = [
     {
         name: 'Udacity Blog',
@@ -102,7 +104,8 @@ $(function() {
         feedList = $('.feed-list'),
         feedItemTemplate = Handlebars.compile($('.tpl-feed-list-item').html()),
         feedId = 0,
-        menuIcon = $('.menu-icon-link');
+        menuIcon = $('.menu-icon-link'); 
+        
 
     /* Loop through all of our feeds, assigning an id property to
      * each of the feeds based upon its index within the array.
@@ -131,8 +134,9 @@ $(function() {
 
     /* When the menu icon is clicked on, we need to toggle a class
      * on the body to perform the hiding/showing of our menu.
+     * When menu is clicked, set isClicked to true
      */
     menuIcon.on('click', function() {
-        $('body').toggleClass('menu-hidden');
+        $('body').toggleClass('menu-hiddenn');
     });
 }());

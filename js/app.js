@@ -137,6 +137,6 @@ $(function() {
      * When menu is clicked, set isClicked to true
      */
     menuIcon.on('click', function() {
-        $('body').toggleClass('menu-hiddenn');
+        $('body').toggleClass('menu-hidden');
     });
 }());

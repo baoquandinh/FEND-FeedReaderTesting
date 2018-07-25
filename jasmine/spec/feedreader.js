@@ -31,14 +31,11 @@ $(function () {
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
-
         it('URLs are defined', function () {
             for (let feed in allFeeds) {
                 expect(allFeeds[feed].url).toBeDefined();
             }
         });
-
-
 
         /* TODO: Write a test that loops through each feed
          * in the allFeeds object and ensures it has a name defined
@@ -53,7 +50,6 @@ $(function () {
 
     });
 
-
     /* TODO: Write a new test suite named "The menu" */
     describe('The menu', function () {
         let menuIcon = document.querySelector('.menu-icon-link')
@@ -65,7 +61,7 @@ $(function () {
          * hiding/showing of the menu element.
          */
         it('hidden by default', function () {
-            expect(menuHidden.classList.contains("menu-hidden")).toBe(true);
+            expect(menuHidden.classList.contains("menu-hidden")).toBe(true) && menuHidden.classList.length.toBe(1);
         });
 
         /* TODO: Write a test that ensures the menu changes
@@ -73,46 +69,40 @@ $(function () {
          * should have two expectations: does the menu display when
          * clicked and does it hide when clicked again.
          */
-        it("is shown when menu icon is clicked", function(){
-            menuIcon.click()
-            expect(menuHidden).not.toBe(true);
+        it("is shown when menu icon is clicked", function () {
+            menuIcon.click();
+            expect(menuHidden.classList.contains("menu-hidden")).not.toBe(true) && menuHidden.classList.length.toBe(1);
         });
 
-        
-        
+        it("is not shown when menu icon is clicked again", function () {
+            menuIcon.click()
+            expect(menuHidden.classList.contains("menu-hidden")).toBe(true) && menuHidden.classList.length.toBe(1);
+        });
 
-        //  When menu is clicked, menu should be displayed
-        // it('test', function () {
-        //     // let menuHidden = document.querySelector('body').classList.contains("menu-hidden");
-        //     menuIcon.addEventListener('click', function () {
-        //         check();
-        //         if (isHidden === true) {
-        //             isHidden = false;
-        //             //expect(menuHidden).toBe(false);
-        //             console.log("Hidden " + isHidden);
-        //             // check();
-        //         } else {
-        //             isHidden = true;
-        //             //expect(menuHidden).toBe(true);
-        //             console.log("Hidden " + isHidden);
-        //             // check();
-        //         }
-        //     });
-        // });
     });
 
 
 
     /* TODO: Write a new test suite named "Initial Entries" */
     describe('Initial Entries', function () {
+        let container = document.querySelector('.feed');
         /* TODO: Write a test that ensures when the loadFeed
          * function is called and completes its work, there is at least
          * a single .entry element within the .feed container.
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
+        beforeEach(function(done) {
+            setTimeout(function(){
+                
+            });
+        });
 
-
+        it('contains at least a single .entry element', function(done) {    
+            console.log("now i am called")
+            console.log(container.childNodes.length)
+            done()
+        });
     });
 
 
@@ -143,8 +133,3 @@ $(function () {
 
 
 }());
-
-
-function getLeftBound() {
-    return document.querySelector('.slide-menu').getBoundingClientRect().left
-}

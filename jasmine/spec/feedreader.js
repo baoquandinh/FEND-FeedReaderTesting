@@ -81,18 +81,8 @@ $(function () {
 
     });
 
-    // checkEntries(callback) {
-    //     if (self.container.childNodes.length > 0) {
-    //         callback()
-    //     }
-    //     else {
-    //         checkEntries(callback)
-    //     }
-    // }
-
     /* TODO: Write a new test suite named "Initial Entries" */
     describe('Initial Entries', function () {
-        let container = document.querySelector('.feed');
         /* TODO: Write a test that ensures when the loadFeed
          * function is called and completes its work, there is at least
          * a single .entry element within the .feed container.
@@ -101,14 +91,16 @@ $(function () {
          */
 
         beforeEach(function(done) {
-            container.
+            console.log(document.querySelector('.feed').children.length)
+            loadFeed(0, function(){
+                console.log("feed has been loaded")
+                done()
+            })
         });
 
-        it('contains at least a single .entry element', function(done) {    
-            console.log("now i am called")
-            console.log(container.childNodes.length)
-            expect(container.childNodes.length).not.toBe(0)
-            done()
+        it('contains at least a single .entry element', function() {  
+            console.log(document.querySelector('.feed').children.length)
+            expect(document.querySelector('.feed').children.length).not.toBe(0)
         });
     });
 

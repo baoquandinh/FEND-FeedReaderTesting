@@ -92,15 +92,15 @@ $(function () {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
+
         beforeEach(function(done) {
-            setTimeout(function(){
-                
-            });
+            console.log(container.childElementCount)
         });
 
         it('contains at least a single .entry element', function(done) {    
             console.log("now i am called")
             console.log(container.childNodes.length)
+            expect(container.childNodes.length).not.toBe(0)
             done()
         });
     });
@@ -130,6 +130,5 @@ $(function () {
         //     });
 
     });
-
 
 }());

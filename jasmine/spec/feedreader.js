@@ -81,7 +81,14 @@ $(function () {
 
     });
 
-
+    // checkEntries(callback) {
+    //     if (self.container.childNodes.length > 0) {
+    //         callback()
+    //     }
+    //     else {
+    //         checkEntries(callback)
+    //     }
+    // }
 
     /* TODO: Write a new test suite named "Initial Entries" */
     describe('Initial Entries', function () {
@@ -94,7 +101,7 @@ $(function () {
          */
 
         beforeEach(function(done) {
-            console.log(container.childElementCount)
+            container.
         });
 
         it('contains at least a single .entry element', function(done) {    
@@ -104,6 +111,8 @@ $(function () {
             done()
         });
     });
+
+    
 
 
     /* TODO: Write a new test suite named "New Feed Selection" */
@@ -132,3 +141,5 @@ $(function () {
     });
 
 }());
+
+

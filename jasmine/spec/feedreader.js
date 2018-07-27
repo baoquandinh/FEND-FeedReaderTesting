@@ -93,13 +93,11 @@ $(function () {
         beforeEach(function(done) {
             console.log(document.querySelector('.feed').children.length)
             loadFeed(0, function(){
-                console.log("feed has been loaded")
                 done()
             })
         });
 
         it('contains at least a single .entry element', function() {  
-            console.log(document.querySelector('.feed').children.length)
             expect(document.querySelector('.feed').children.length).not.toBe(0)
         });
     });
@@ -109,26 +107,32 @@ $(function () {
 
     /* TODO: Write a new test suite named "New Feed Selection" */
     describe('New Feed Selection', function () {
-        let oldFeeds = [];
-        let feedChanged = false;
+        let oldFeed = [];
+        let currentFeed = [];
+        console.log(this)
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-        //     beforeEach(function (done) {
-        //         console.log("Before checkingNewFeed: " + feedChanged)
-        //         checkNewFeed(function (cb) {
-        //             for (let feed in allFeeds) {
-        //                 oldFeeds.push(allFeeds[feed]);
-        //             }
-        //             done();
-        //         });
+         beforeEach(function(done) {
+                loadFeed(0, function() {
+                        oldFeed.push(allFeeds[0])
+                        console.log(oldFeed)
+                        console.log(this)
+                        done()
+                });
+         })
 
-        //     });
-        //     it('when new feed is loaded, content changes', function(done) {
-        //         console.log("It is now changed: " + self.feedChanged);
-        //         done();
-        //     });
+         it('should show new content when new feed is clicked', function(done) {
+             loadFeed(0, function() {
+                currentFeed.push(oldFeed[0])
+                console.log(this)
+                done()
+             });
+             console.log(this)
+             expect(currentFeed).not.toBe(oldFeed)
+             done()
+         });
 
     });
 

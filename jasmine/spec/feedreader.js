@@ -90,52 +90,58 @@ $(function () {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
 
-        beforeEach(function(done) {
-            console.log(document.querySelector('.feed').children.length)
-            loadFeed(0, function(){
+        beforeEach(function (done) {
+            loadFeed(0, function () {
                 done()
             })
         });
 
-        it('contains at least a single .entry element', function() {  
+        it('contains at least a single .entry element', function () {
             expect(document.querySelector('.feed').children.length).not.toBe(0)
         });
     });
 
-    
+
 
 
     /* TODO: Write a new test suite named "New Feed Selection" */
     describe('New Feed Selection', function () {
         let oldFeed = [];
         let currentFeed = [];
-        console.log(this)
+        let number = Math.floor(Math.random() * 3)
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-         beforeEach(function(done) {
-                loadFeed(0, function() {
-                        oldFeed.push(allFeeds[0])
-                        console.log(oldFeed)
-                        console.log(this)
-                        done()
-                });
-         })
-
-         it('should show new content when new feed is clicked', function(done) {
-             loadFeed(0, function() {
-                currentFeed.push(oldFeed[0])
-                console.log(this)
+        beforeEach(function (done) {
+            loadFeed(0, function () {
+                let entries = document.getElementsByClassName('entry')
+                for (let i = 0; i < entries.length; i++) {
+                    oldFeed.push(entries[i].innerText)
+                }
                 done()
-             });
-             console.log(this)
-             expect(currentFeed).not.toBe(oldFeed)
-             done()
-         });
+            });
+        })
 
+
+        it('should show new content when new feed is clicked', function (done) {
+            loadFeed(number, function () {
+                console.log(number)
+                let entries = document.getElementsByClassName('entry')
+                for (let i = 0; i < entries.length; i++) {
+                    currentFeed.push(entries[i].innerText)
+                }
+                
+                if (currentFeed.length === oldFeed.length) {
+                    for (let y = 0; y < currentFeed.length; y++) {
+                        expect(currentFeed[y]).not.toBe(oldFeed[y])
+                    }
+                } else {
+                    expect(currentFeed.length).toBe(oldFeed.length)
+                }
+                done()
+            });
+        });
     });
 
 }());
-
-

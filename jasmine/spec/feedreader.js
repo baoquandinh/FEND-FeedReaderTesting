@@ -22,6 +22,8 @@ $(function () {
          * page?
          */
         it('are defined', function () {
+            console.log("The first test for RSS Feeds check to make sure that the feed is not empty")
+            console.log(allFeeds)
             expect(allFeeds).toBeDefined();
             expect(allFeeds.length).not.toBe(0);
         });
@@ -32,7 +34,10 @@ $(function () {
          * and that the URL is not empty.
          */
         it('URLs are defined', function () {
+            console.log("This second test checks to make sure that each feed object has a URL defined")
+            console.log(`How many feeds total: ${allFeeds.length}`)
             for (let feed in allFeeds) {
+                console.log("URL: " + allFeeds[feed].url)
                 expect(allFeeds[feed].url).toBeDefined();
             }
         });
@@ -42,7 +47,9 @@ $(function () {
          * and that the name is not empty.
          */
         it('names are defined and not empty', function () {
+            console.log("The third test will loop through each feed and ensures that each feed has a name defined and that the name is not empty: ")
             for (let feed in allFeeds) {
+                console.log("Feed name: " + allFeeds[feed].name)
                 expect(allFeeds[feed].name).toBeDefined();
                 expect(allFeeds[feed].name).not.toBe("");
             }
@@ -61,6 +68,7 @@ $(function () {
          * hiding/showing of the menu element.
          */
         it('hidden by default', function () {
+            console.log("This fourth test will confirm that the menu is hidden by default... which is true, do you see the menu when the page loads? Of course not! Otherwise this test will fail")
             expect(menuHidden.classList.contains("menu-hidden")).toBe(true) && menuHidden.classList.length.toBe(1);
         });
 
@@ -70,11 +78,13 @@ $(function () {
          * clicked and does it hide when clicked again.
          */
         it("is shown when menu icon is clicked", function () {
+            console.log("This fifth test will check that when the menu is clicked, the menu will display. Go ahead and click on the menu, you will see it load")
             menuIcon.click();
             expect(menuHidden.classList.contains("menu-hidden")).not.toBe(true) && menuHidden.classList.length.toBe(1);
         });
 
         it("is not shown when menu icon is clicked again", function () {
+            console.log("This sixth test will check that when the menu is clicked once more, if it was already clicked once, will hide the menu, try it out! ")
             menuIcon.click()
             expect(menuHidden.classList.contains("menu-hidden")).toBe(true) && menuHidden.classList.length.toBe(1);
         });
@@ -97,6 +107,7 @@ $(function () {
         });
 
         it('contains at least a single .entry element', function () {
+            console.log("This 7th test confirms that there are entries when the feed is loaded")
             expect(document.querySelector('.feed').children.length).not.toBe(0)
         });
     });
@@ -126,7 +137,8 @@ $(function () {
 
         it('should show new content when new feed is clicked', function (done) {
             loadFeed(number, function () {
-                console.log(number)
+                console.log("This final test checks for new entries if you click on new feeds randomly.")
+                console.log(allFeeds[number])
                 let entries = document.getElementsByClassName('entry')
                 for (let i = 0; i < entries.length; i++) {
                     currentFeed.push(entries[i].innerText)

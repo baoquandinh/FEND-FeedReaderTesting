@@ -48,4 +48,7 @@ Review the Feed Reader Testing [Project Rubric](https://review.udacity.com/#!/pr
 21. Write a README file detailing all steps required to successfully run the application. If you have added additional tests (for Udacious Test Coverage),  provide documentation for what these future features are and what the tests are checking for.
 
 # How to successfully run the application
-The test should run by itself. Simply look at the console log to see what it's currently testing. IMPORTANT thing to note, the final test randomly select a feed to test. If the feeds are different, it will pass, otherwise it will fail because the feeds are the same.
+The test should run by itself. Simply look at the console log to see what it's currently testing. 
+
+## IMPORTANT 
+The final test randomly select a feed to test. By default, we are comparing the entrie to the default feed entries to come up when the page loads. If the feed entries are different, it will pass, otherwise it will fail because the feed entries are the same.

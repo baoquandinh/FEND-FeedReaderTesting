@@ -7,8 +7,6 @@
  */
 
 // The names and URLs to all of the feeds we'd like available.
-let isHidden = true;
-
 let allFeeds = [
     {
         name: 'Udacity Blog',
@@ -22,7 +20,7 @@ let allFeeds = [
     }, {
         name: 'Linear Digressions',
         url: 'http://feeds.feedburner.com/udacity-linear-digressions'
-    },
+    }, 
 ];
 
 /* This function starts up our application. The Google Feed

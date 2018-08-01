@@ -86,40 +86,22 @@ $(function () {
 
     /* New Feed Selection test suite, involves all the feeds in our allFeeds variable and their individual entries*/
     describe('New Feed Selection', function () {
-        let oldFeed = [];
-        let currentFeed = [];
-        let number = Math.floor(Math.random() * 3)
-        /* TODO: Write a test that ensures when a new feed is loaded
-         * by the loadFeed function that the content actually changes.
-         * Remember, loadFeed() is asynchronous.
+        /* This test ensures that when a new feed is loaded, the contents are different
          */
         beforeEach(function (done) {
             loadFeed(0, function () {
-                let entries = document.getElementsByClassName('entry')
-                for (let i = 0; i < entries.length; i++) {
-                    console.log(document.query)
-                    oldFeed.push(entries[i].innerText)
-                }
+                this.oldFeed = document.querySelector('.feed').innerHTML
                 done()
             });
         })
 
-
         it('should show new content when new feed is clicked', function (done) {
-            loadFeed(number, function () {
-                let entries = document.getElementsByClassName('entry')
-                for (let i = 0; i < entries.length; i++) {
-                    currentFeed.push(entries[i].innerText)
-                }
-                if (currentFeed.length === oldFeed.length) {
-                    for (let y = 0; y < currentFeed.length; y++) {
-                        expect(currentFeed[y]).not.toBe(oldFeed[y])
-                    }
-                } else {
-                    expect(currentFeed.length).toBe(oldFeed.length)
-                }
+            loadFeed(1, function () {
+                let currentFeed = document.querySelector('.feed').innerHTML
+                expect(currentFeed).not.toBe(oldFeed)
                 done()
             });
+            
         });
     });
 }());

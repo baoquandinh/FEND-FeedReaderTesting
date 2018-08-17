@@ -97,11 +97,10 @@ $(function () {
 
         it('should show new content when new feed is clicked', function (done) {
             loadFeed(1, function () {
-                let currentFeed = document.querySelector('.feed').innerHTML
-                expect(currentFeed).not.toBe(oldFeed)
-                done()
+                let currentFeed = document.querySelector('.feed').innerHTML;
+                expect(currentFeed).not.toBe(oldFeed);
+                done();
             });
-            
         });
     });
 }());
